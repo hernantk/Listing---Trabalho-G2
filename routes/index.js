@@ -1,4 +1,4 @@
-import { listingService, listingTypegService } from "../service"
+import { listingService, listingTypeService } from "../service"
 
 export const defineListingRoutes = (app) =>{
 
@@ -26,12 +26,12 @@ export const defineListingRoutes = (app) =>{
 export const defineListingTypeRoutes = (app) =>{
 
     app.post('/listing',async(req,res)=>{
-        await listingTypegService.save(req.body)
+        await listingTypeService.save(req.body)
         res.json({})
     })
 
     app.get('/listing',async(req,res)=>{
-        const listingType = await listingTypegService.findAll()
+        const listingType = await listingTypeService.findAll()
         res.json({users: listingType})
     })
 

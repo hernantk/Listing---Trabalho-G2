@@ -1,2 +1,2 @@
 export * as listingService from "./listing"
-export * as listingTypegService from "./listing_type"
+export * as listingTypeService from "./listing_type"

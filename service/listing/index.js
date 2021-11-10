@@ -1,4 +1,3 @@
-import bcrpt from "bcrypt"
 import { listingRepository } from "../../data/repository"
 
 export const save = async (data) =>{
