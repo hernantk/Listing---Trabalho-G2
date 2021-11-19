@@ -1,13 +1,14 @@
 import { connectDbListing } from '../../db';
 import Listing from '../../models/listing';
 import mongoose  from 'mongoose';
-import { listingTypeRepository } from '..';
+import { listingTypeRepository, userRepository } from '..';
 
 export const save = async(data) =>{
     
     const listingType = await listingTypeRepository.findById(data.typeId)
+    const user = await userRepository.findById(data.userId)
 
-    if(listingType!==null){
+    if(listingType!==null && user!==null){
         const con = await connectDbListing()
         const listing = new Listing(data)
         listing.creationDate = new Date()
@@ -15,14 +16,14 @@ export const save = async(data) =>{
         listing.rating = 0
         await listing.save()
         await con.disconnect()
+    }else{
+        throw new Error("usuario não existe")
     }
 }
 
 export const findAll = async() =>{
 
     const con = await connectDbListing()
-
-    
     const listings = await Listing.find()
     await con.disconnect()
     return listings
@@ -31,9 +32,10 @@ export const findAll = async() =>{
 
 
 export const findByType= async(typeId) =>{
-
+    
+    const id = mongoose.Types.ObjectId(typeId)
     const con = await connectDbListing()
-    const listings = await Listing.where({typeId:mongoose.Types.ObjectId(typeId)})
+    const listings = await Listing.where({typeId:id})
     await con.disconnect()
     return listings
 
