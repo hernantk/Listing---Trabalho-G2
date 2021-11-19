@@ -21,10 +21,10 @@ export const findAll = async () =>{
     }
 }
 
-export const findById = async (listingTypeId) =>{
+export const findByType = async (typeId) =>{
 
     try{
-        return await listingRepository.findById(listingTypeId)
+        return await listingRepository.findByType(typeId)
         
     }
     catch(error){
@@ -36,9 +36,9 @@ export const findById = async (listingTypeId) =>{
 export const ratingById = async (data) =>{
 
     try{
-        return await listingRepository.ratingById(listingId)
+        return await listingRepository.ratingById(data)
     }
     catch(error){
-        throw new Error("Não foi possivel listar!")
+        throw new Error("Não foi possivel Avaliar!")
     }
 }

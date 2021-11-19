@@ -1,10 +1,11 @@
 import express from 'express';
-import  {defineUserRoutes}  from './routes/index.js';
+import  {defineListingRoutes, defineListingTypeRoutes}  from './routes/index.js';
 
 const app = express()
 
 app.use(express.json())
 
-defineUserRoutes(app)
+defineListingRoutes(app)
+defineListingTypeRoutes(app)
 
-app.listen(8081,()=> console.log("User Api is up!"))
+app.listen(8080,()=> console.log("Listing Api is up!"))

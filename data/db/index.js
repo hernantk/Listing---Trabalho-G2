@@ -1,9 +1,12 @@
 import mongoose from "mongoose"
 
-const DATABASE_URL = "mongodb://localhost:27017/db_listing"
+const DATABASE_URL_LISTING = "mongodb://localhost:27017/db_listing"
+const DATABASE_URL_USERS = "mongodb://localhost:27017/db_users"
 
-const connect = async() =>{
-    return await mongoose.connect(DATABASE_URL)
+export const connectDbListing = async() =>{
+    return await mongoose.connect(DATABASE_URL_LISTING)
 }
 
-export default connect
+export const connectDbUsers = async() =>{
+    return await mongoose.connect(DATABASE_URL_USERS)
+}

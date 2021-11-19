@@ -9,28 +9,28 @@ export const defineListingRoutes = (app) =>{
 
     app.get('/listing',async(req,res)=>{
         const listing = await listingService.findAll()
-        res.json({users: listing})
+        res.json({listing: listing})
     })
 
-    app.get('/listing/:listingTypeId',async(req,res)=>{
-        const listing = await listingService.findById(req.params.userId)
-        res.json({user: listing})
+    app.get('/listing/:typeId',async(req,res)=>{
+        const listing = await listingService.findByType(req.params.typeId)
+        res.json({listing: listing})
     })
 
-    app.get('/listing/rating',async(req,res)=>{
-        const listing = await listingService.ratingById(req.body)
-        res.json({user: listing})
+    app.post('/listing/rating',async(req,res)=>{
+        const rating = await listingService.ratingById(req.body)
+        res.json({rating: rating})
     })
 }
 
 export const defineListingTypeRoutes = (app) =>{
 
-    app.post('/listing',async(req,res)=>{
+    app.post('/listingType',async(req,res)=>{
         await listingTypeService.save(req.body)
         res.json({})
     })
 
-    app.get('/listing',async(req,res)=>{
+    app.get('/listingType',async(req,res)=>{
         const listingType = await listingTypeService.findAll()
         res.json({users: listingType})
     })
