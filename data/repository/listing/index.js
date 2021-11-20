@@ -5,7 +5,7 @@ import { listingTypeRepository, userRepository } from '..';
 
 export const save = async(data) =>{
     
-    const listingType = await listingTypeRepository.findById(data.typeId)
+    const listingType = await listingTypeRepository.findById(data.listingTypeId)
     const user = await userRepository.findById(data.userId)
 
     if(listingType!==null && user!==null){
