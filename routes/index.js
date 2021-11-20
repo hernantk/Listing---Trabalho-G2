@@ -32,7 +32,7 @@ export const defineListingTypeRoutes = (app) =>{
 
     app.get('/listingType',async(req,res)=>{
         const listingType = await listingTypeService.findAll()
-        res.json({users: listingType})
+        res.json({listingTypes: listingType})
     })
 
 }
