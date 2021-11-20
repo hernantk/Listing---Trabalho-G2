@@ -6,7 +6,7 @@ const listingSchema = mongoose.Schema({
     title:String,
     description:String,
     price:Number,
-    typeId: mongoose.Types.ObjectId,
+    listingTypeId: mongoose.Types.ObjectId,
     userId: mongoose.Types.ObjectId,
     creationDate:Date,
     rating:Number,

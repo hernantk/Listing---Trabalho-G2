@@ -31,11 +31,12 @@ export const findAll = async() =>{
 }
 
 
-export const findByType= async(typeId) =>{
+export const findByType= async(listingTypeId) =>{
     
-    const id = mongoose.Types.ObjectId(typeId)
+    const listingId = mongoose.Types.ObjectId(listingTypeId)
+
     const con = await connectDbListing()
-    const listings = await Listing.where({typeId:id})
+    const listings = await Listing.where({listingTypeId:listingId})
     await con.disconnect()
     return listings
 
@@ -44,7 +45,7 @@ export const findByType= async(typeId) =>{
 export const ratingById= async(data) =>{
 
     const con = await connectDbListing()
-    const listing = await Listing.findById(data.listingId)
+    const listing = await Listing.findById(data.listingTypeId)
     listing.rating += data.rating
     listing.numberOfRatings += 1
     await listing.save()

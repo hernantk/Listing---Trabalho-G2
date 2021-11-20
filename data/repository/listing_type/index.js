@@ -4,10 +4,7 @@ import ListingType from '../../models/listingType';
 export const save = async(data) =>{
 
     const conListing = await connectDbListing()
-    
     const listingType = new ListingType(data)
-
-    
     await listingType.save()
     await conListing.disconnect()
 
